@@ -1,0 +1,9 @@
+<!ELEMENT books (book*)>
+<!ELEMENT book (title,author+,ISBN,publisher?,edition,price)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT ISBN (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+<!ELEMENT edition (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ATTLIST price currency (INR|USD) #REQUIRED>

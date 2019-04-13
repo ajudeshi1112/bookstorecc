@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="tablestyle.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+	
+		<script type="text/javascript">
+			function capitalize(str){
+			
+				return str.charAt(0).toUpperCase() + str.slice(1);
+			
+			}
+			//xmlhttp=null;
+			if(window.XMLHttpRequest){
+				
+				xmlhttp=new XMLHttpRequest();
+			}
+			else{
+				
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				
+			}
+			
+			//document.write(1);
+			xmlhttp.open("GET","bookx.xml",false);
+			//document.write(2);
+			xmlhttp.send();
+			//document.write(3);
+			xmlDoc=xmlhttp.responseXML;
+			//document.write(4);
+			var x=xmlDoc.getElementsByTagName('book');
+		
+			document.write("<center><table>");
+			document.write("<tr><th class='tbh'>TITLE</th><th class='tbh'>AUTHOR</th><th class='tbh'>ISBN_NUMBER</th><th class='tbh'>PUBLISHER</th><th class='tbh'>EDITION</th><th class='tbh'>PRICE</th></tr>");
+			
+			for(var i=0;i<x.length;i++){
+				document.write("<tr><td><cite>");
+				document.write(capitalize(x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue));
+				document.write("</cite></td><th class='bg'>");
+				var y=x[i].getElementsByTagName("author");
+				var s="";
+				for(j=0;j<y.length;j++){
+					if(j!=0)
+						s+=",\t";
+					s+=capitalize(y[j].childNodes[0].nodeValue);
+				}
+				document.write(s);
+				document.write("</th><td>");
+				document.write(x[i].getElementsByTagName("ISBN")[0].childNodes[0].nodeValue);
+				document.write("</td><td>");
+				
+				var publisher=x[i].getElementsByTagName("publisher")[0];
+				if(publisher!=null)
+					document.write(publisher.childNodes[0].nodeValue);
+				else
+					document.write("-");
+				document.write("</td><td>");
+				document.write(x[i].getElementsByTagName("edition")[0].childNodes[0].nodeValue);
+				document.write("</td><td>");
+				var price=x[i].getElementsByTagName("price")[0];
+				
+				document.write(price.getAttribute('currency')+" "+price.childNodes[0].nodeValue);
+				document.write("</td></tr>");
+			}
+			document.write("</center></table>");
+		</script>
+	</body>
+</html>

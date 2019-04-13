@@ -1,0 +1,159 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script = "text/javascript">
+function no(cardno,str){
+	var visa_pattern=/^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+	var ms_pattern=/^(?:5[1-5][0-9]{14})$/;
+	var ae_pattern= /^(?:3[47][0-9]{13})$/;
+	var disc_pattern=/^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+	if(cardno.match(ms_pattern))
+		return "";
+	else
+		{ 
+			return "Not a valid master card credit card no!\n"
+					}
+}
+function name(cardname,str){
+	var namepattern=/^((?:[A-Za-z]+ ?){1,3})$/;
+	if(cardname.match(namepattern))
+		return "";
+	else
+		{ 
+			return "Please check cardholder name\n";
+			
+		}
+}
+function date(expdate,str){
+	var min="2018-02";
+	var max="2068-12";
+	if(expdate>=min && expdate<=max)
+		return "";
+	else
+		{ 
+			return "Expiration date invalid\n";
+			
+		}
+
+}
+function cvv(cardcvv,str){
+	var cvvpattern=/^[0-9]{3,4}$/;
+	if(cardcvv.match(cvvpattern))
+		return "";
+	else
+		{ 
+			return "Invalid CVV\n";
+			
+		}
+}
+function cardValidate(){
+    
+  var cardno=document.paymentform.number.value;
+  var cardname=document.paymentform.name.value;
+  var cardcvv=document.paymentform.cvv.value;
+  var expdate=document.paymentform.expiry.value;
+  if(cardno=="" || cardname=="" || cardcvv=="" || expdate==""){
+	alert('Please fill in all the fields');
+	return false;
+  }
+  var str="";
+  str=str.concat(name(cardname));
+  str=str.concat(no(cardno));
+  str=str.concat(date(expdate));
+  str=str.concat(cvv(cardcvv));
+  if(str==""){
+				alert('Payment Successful\n');
+				document.paymentform.action="headercss.html";
+				return true;
+			}
+	alert(str);
+	return false;
+}
+</script>
+<link href="paystyle.css" text="text/css" rel="stylesheet">
+<link href="commonstyle.css" text="text/css" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="HandheldFriendly" content="true">
+</head>
+<body>
+			<table id="navtable">
+				<tr>
+					<td><cite>BookShelf</cite></td>			
+					<td><img id="openbook" src="openbook.png"></td>
+					<td><a href="regcss.html">Create an account</a> | <a href="logcss.html">SignIn</a> | <a href="profilecss.html">View Profile</a> | <a href="cart.html">Go to Cart</a>| <a href="headercss.html">Logout</a></td>
+
+				</tr>
+			</table>
+			<input type="button" onclick="location.href='cart.html'" value="back">
+<center>
+<div id="payform">
+	<img id="lock" src="pay.png">
+	Secure Payment Info
+	<hr>
+
+	
+	<div id="cards">
+		<a href="#"><img class ="images" src="visa.png" id="visa"></a>
+		<a href="#"><img class="images" src="mastercard.png" id="master"></a>
+		<a href="#"><img class="images" src="americanexp.png" id="american"></a>
+		<a href="#"><img class="images" src="discover.png" id="discover"></a>
+	</div>
+<div>	
+	<div id="payform1">
+		<form method="post" name="paymentform" onsubmit="return (cardValidate());"action="headercss.html">
+		<input type="text" name="name" placeholder="Cardholder's name" autocomplete="off"><br><br>
+		<input type="text" name="number" placeholder="Credit card number" autocomplete="off"><br><br>
+		Expiration date &nbsp;&nbsp;
+		<input type="month" name="expiry"><br><br>
+		<input type="text" name="cvv" placeholder="CVV" autocomplete="off">
+		<input type="submit" name="proceed" value="Proceed" autocomplete="off">
+		</form>
+	</div>	
+</div>
+</center>
+<footer>
+		<table id="foot">
+			<tr>
+			<td>Company</td>
+			<td>Policies</td>
+			<td>Help</td>
+			<td>Follow us</td>
+		</tr>
+		<tr>
+			<td>About Us</td>
+			<td>Privacy Policies</td>
+			<td>Payment</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Career</td>
+			<td>Terms of use</td>
+			<td>Shipping</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Blog</td>
+			<td>Secure Shopping</td>
+			<td>Return</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Contact Us</td>
+			<td>Copyright Policies</td>
+			<td>FAQ</td>
+			<td></td>
+		</tr>
+	</table>
+	</footer>
+	<script>
+		$('#visa, #master, #american, #discover').click(function(){
+			
+			$(this).toggleClass('opaque');
+
+
+		});
+
+	</script>
+</body>
+</html>

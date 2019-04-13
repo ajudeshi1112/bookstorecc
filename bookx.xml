@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE books SYSTEM "books.dtd">
+<books>
+	<book>
+		<title>The Paper Trail</title>
+		<author>Alexander Monro</author>
+		<ISBN>15263-77999</ISBN>
+		<publisher>Hachette</publisher>
+		<edition>March 22, 2016</edition>
+		<price currency="USD">9.73</price>
+	</book>	
+	<book>
+		<title>The Complete Reference C++</title>
+		<author>Herbert Schildt</author>
+		<ISBN>978-0071502399</ISBN>
+		<publisher>McGraw Hill Education</publisher>
+		<edition>4</edition>
+		<price currency="INR">510</price>
+	</book>
+	<book>
+		<title>Playing it my way</title>
+		<author>Sachin Tendulkar</author>
+		<author>Boria Majumdar</author>
+		<ISBN>978-14-736-0520-6</ISBN>
+		<publisher>Hodder &amp; Stoughton</publisher>
+		<edition>November 6, 2014</edition>
+		<price currency="INR">595</price>
+	</book>
+	<book>
+		<title>Digital Fortress</title>
+		<author>Dan Brown</author>
+		<ISBN>0-312-18087-X</ISBN>
+		<publisher>St.Martin's Press</publisher>
+		<edition>2</edition>
+		<price currency="INR">400</price>
+	</book>
+</books>	

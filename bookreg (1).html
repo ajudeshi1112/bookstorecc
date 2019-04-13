@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script ="text/javascript">
+function validateName(name,str,no){
+	var pattern=/[A-Za-z]+$/;
+	if(name.match(pattern))
+		return "";
+	else{
+		document.action="bookreg.html";
+		if(no==1)
+			return "Invalid firstname\t";
+		else
+			return "Invalid lastname\t";	
+		}
+
+}
+function validatePhone(phone,str){
+	var pattern=/[0-9]{10}$/;
+	if(phone.match(pattern))
+		return "";
+	else{
+		document.action="bookreg.html";
+		return "Invalid phonenumber\t";		
+	}	
+}
+function validateEmail(email,str){
+	var pattern=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	if(email.match(pattern))
+		return "";
+	else{
+		document.action="bookreg.html";
+		return "Invalid email-id\t";
+    }
+} 
+function validatePass(pass,cpass,str){
+	
+	if(pass===cpass)
+		return "";
+	else{
+		document.action="bookreg.html";
+		return "Password and Confirmation password fields do not match\t";
+		
+	}	
+}
+function validation(){
+	
+	var fname=document.registration.firstname.value;
+	var lname=document.registration.lastname.value;
+	var phone=document.registration.phone.value;
+	var email=document.registration.email.value;
+	var pass=document.registration.pass.value;
+	var cpass=document.registration.cpass.value;
+	if(fname == "" || lname == "" || phone == "" || email =="" || pass.length =="" || cpass ==""){
+		alert('Please fill in all fields!\n');
+		return false;
+	}
+	var str="";
+	str=str.concat(validateName(fname,str,1));
+	str=str.concat(validateName(lname,str,2));
+	str=str.concat(validatePhone(phone,str));
+	str=str.concat(validateEmail(email,str));
+	str=str.concat(validatePass(pass,cpass,str));
+	if(str == ""){
+		alert('Registered sucessfully!');
+		document.registration.action="booksign.html";
+		return true;		
+		}
+	
+		alert(str);
+		return false;
+	
+			
+}
+
+
+</script>
+</head>
+<!body background="back8.jpg">
+<body bgcolor="white">
+<br><br><br>
+<center>
+<font color="green" size="6"><cite>Sign Up </cite></font>
+<hr>
+<form method="post" name="registration" onsubmit="return (validation());" action="booksign.html">
+  <img src="name.png" height="14" width="15">
+
+  <input type="text" name="firstname" placeholder="First Name" autocomplete="off">
+  <br><br>
+  <img src="name.png" height="14" width="15">
+  <input type="text" name="lastname" placeholder="Last Name" autocomplete="off">
+  <br><br>
+  <img src="phoneicon.png" height="14" width="15">
+  <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off">
+  <br><br>
+  <img src="emailicon.png" height="15" width="16">
+  <input type="email" name="email" placeholder="Email" autocomplete="off">
+  <br><br>
+  <img src="password.png" height="15" width="16">
+  <input type="password" name="pass" placeholder="Password" autocomplete="off">
+  <br><br>
+  <img src="password.png" height="15" width="16">
+  <input type="password" name="cpass" placeholder="Confirm Password" autocomplete="off">
+  <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="submit" value="Sign Up & Get Started">
+</form> 
+</center>
+
+</body>
+</html>

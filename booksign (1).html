@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script ="text/javascript">
+function loginValidate(){
+	var mail=document.loginform.email.value;
+	var password=document.loginform.pass.value;
+	if(mail=="a@gmail.com" && password=="123"){
+		alert('Login Sucessful!\nWelcome a@gmail');
+		document.action="cat1.html";
+		return true;
+	}
+	document.action="booksign.html";
+	alert('Invalid username/password combination\n');
+	return false;
+}
+
+</script>
+</head>
+<body bgcolor="white">
+<br><br><br><br>
+<center>
+
+<font color="green" size="6"><cite>Login Into Your Account</cite></font>
+<hr>
+
+<form method="post" name="loginform" onsubmit="return (loginValidate());" action="cat1.html">
+  
+
+  
+  <img src="emailicon.png" height="18" width="18">
+  <input type="email" name="email" placeholder="Email" autocomplete="off">
+  <br><br>
+  <img src="key.png" height="20" width="20">
+  <input type="password" name="pass" placeholder="Password" autocomplete="off">
+  <br><br>
+  <input type="checkbox" name="check"><font color="#2E4053">Keep me signed in |</font><font color="blue">&nbsp; <a href="profilepage.html">Forgot Password</a></font>
+  <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="submit" value="Sign In">
+</form> 
+<br>
+<font color="#41C84C">Dont have an account?</font>&nbsp; <a href="bookreg.html">Sign Up</a>
+<br><br>
+<font color="#2E4053">Or login with ...</font>&nbsp;&nbsp; <a href="ok.html"><img src="fb.PNG" height="25" width="25"></a>&nbsp;
+<a href="ok.html"><img src="tw.JPG" height="25" width="25"></a>&nbsp;
+<a href="ok.html"><img src="gp.PNG" height="25" width="25"></a>&nbsp;
+<a href="ok.html"><img src="in.JPG" height="25" width="25"></a>&nbsp;
+</center>
+</body>
+</html>
